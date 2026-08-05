@@ -13,6 +13,7 @@ RUN npm install -g pnpm@10.4.1
 
 # Copiar package files
 COPY package.json ./
+COPY pnpm-lock.yaml ./
 
 # Copiar patches ANTES de pnpm install
 COPY patches ./patches
@@ -41,6 +42,7 @@ RUN npm install -g pnpm@10.4.1
 
 # Copiar package files desde builder
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/pnpm-lock.yaml ./
 
 # Copiar patches para producción (por si se necesitan)
 COPY --from=builder /app/patches ./patches

@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1784691616333,
+      "tag": "0000_outstanding_penance",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1784691810265,
+      "tag": "0001_nostalgic_bug",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1784762817590,
+      "tag": "0002_faulty_gauntlet",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1784862500377,
+      "tag": "0003_peaceful_alice",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1784863937626,
+      "tag": "0004_steady_paper_doll",
+      "breakpoints": true
+    }
+  ]
+}

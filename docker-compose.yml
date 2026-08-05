@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # ========================================================================
+  # Node.js Application
+  # ========================================================================
+  # Note: This container connects to an existing MySQL database.
+  # Database must be created and configured before running this container.
+  # See DEPLOY.md for setup instructions.
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: memoria-floral-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # Database - Connect to existing MySQL instance
+      DATABASE_URL: ${DATABASE_URL}
+      
+      # Server Configuration
+      PORT: ${PORT:-3000}
+      HOST: ${HOST:-0.0.0.0}
+      
+      # Authentication
+      JWT_SECRET: ${JWT_SECRET}
+      
+      # AWS S3 / Cloudflare R2 Storage
+      S3_REGION: ${S3_REGION:-us-east-1}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY}
+      S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      S3_ENDPOINT: ${S3_ENDPOINT}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL}
+      
+      # Application Configuration
+      VITE_APP_TITLE: ${VITE_APP_TITLE:-Memoria Floral Deluxe}
+      VITE_APP_LOGO: ${VITE_APP_LOGO}
+    
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    
+    volumes:
+      - ./logs:/app/logs
+    
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

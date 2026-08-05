@@ -1,0 +1,1 @@
+ALTER TABLE `products` MODIFY COLUMN `section` enum('coronas_funebres','sudarios','rosas_inmortalizadas') NOT NULL;

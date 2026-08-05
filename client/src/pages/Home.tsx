@@ -1,7 +1,6 @@
 import AnnouncementBar from "@/components/AnnouncementBar";
 import BibleVerse from "@/components/BibleVerse";
 import CategoriesSection from "@/components/CategoriesSection";
-import FeaturedCarousel from "@/components/FeaturedCarousel";
 import Footer from "@/components/Footer";
 import FunerariasSection from "@/components/FunerariasSection";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -35,7 +34,6 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <TrustBadges />
-        <FeaturedCarousel />
         <CategoriesSection />
 
         {/* Coronas Fúnebres */}

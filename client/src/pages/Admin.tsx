@@ -1,6 +1,4 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { useLocation } from "wouter";
-import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 import AdminLogin from "./admin/AdminLogin";

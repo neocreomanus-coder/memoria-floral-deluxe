@@ -251,17 +251,38 @@ export const appRouter = router({
     }),
 
     // Image upload
-    uploadImage: adminProcedure
-      .input(z.object({ base64: z.string(), filename: z.string(), mimeType: z.string() }))
-      .mutation(async ({ input }) => {
-        const buffer = Buffer.from(input.base64, "base64");
-        // Sanitize filename: remove accents, spaces and special chars
-        const ext = input.filename.split('.').pop()?.toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
-        const safeExt = ['jpg','jpeg','png','webp','gif'].includes(ext) ? ext : 'jpg';
-        const key = `products/${Date.now()}.${safeExt}`;
-        const { url } = await storagePut(key, buffer, input.mimeType);
-        return { url };
-      }),
+  uploadImage: adminProcedure
+  .input(z.object({
+    base64: z.string(),
+    filename: z.string(),
+    mimeType: z.string(),
+  }))
+   .mutation(async ({ input }) => {
+
+    console.log("[UPLOAD] Inicio:", input.filename);
+
+    const buffer = Buffer.from(input.base64, "base64");
+
+    const ext = input.filename
+      .split(".")
+      .pop()
+      ?.toLowerCase()
+      .replace(/[^a-z0-9]/g, "") || "jpg";
+
+    const safeExt = ["jpg", "jpeg", "png", "webp", "gif"].includes(ext)
+      ? ext
+      : "jpg";
+
+    const key = `products/${Date.now()}.${safeExt}`;
+
+    console.log("[UPLOAD] Antes de storagePut");
+
+    const { url } = await storagePut(key, buffer, input.mimeType);
+
+    console.log("[UPLOAD] Después de storagePut:", url);
+
+    return { url };
+   }),
   }),
 });
 

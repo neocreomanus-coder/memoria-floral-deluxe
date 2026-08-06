@@ -51,8 +51,8 @@ services:
       start_period: 10s
     
     networks:
-    - app-network
-    - memoria-network
+      - app-network
+      - memoria-network
 
 networks:
   app-network:

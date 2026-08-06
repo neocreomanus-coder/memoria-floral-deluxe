@@ -51,8 +51,13 @@ services:
       start_period: 10s
     
     networks:
-      - app-network
+    - app-network
+    - memoria-network
 
 networks:
   app-network:
     driver: bridge
+
+  memoria-network:
+    external: true
+    name: memoria-floral-deluxe_memoria-network

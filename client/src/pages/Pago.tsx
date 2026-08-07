@@ -7,13 +7,6 @@ function formatPrice(n: number) {
   return new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", minimumFractionDigits: 0 }).format(n);
 }
 
-function generateOrderNumber() {
-  const prefix = "MFD";
-  const timestamp = Date.now().toString().slice(-6);
-  const random = Math.floor(Math.random() * 900 + 100);
-  return `${prefix}-${timestamp}-${random}`;
-}
-
 type PagoState = {
   total: number;
   orderData: Record<string, unknown>;
@@ -38,25 +31,34 @@ export default function Pago() {
 
   // Step: "instructions" | "confirmed"
   const [step, setStep] = useState<"instructions" | "confirmed">("instructions");
-  const [orderNumber] = useState(() => generateOrderNumber());
+  const [orderNumber, setOrderNumber] = useState("");
 
   useEffect(() => {
-    if (pagoState.total === 0) {
-      navigate("/");
-      return;
-    }
-    timerRef.current = setInterval(() => {
-      setSecondsLeft(s => {
-        if (s <= 1) {
-          clearInterval(timerRef.current!);
-          setTimerExpired(true);
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
+  if (pagoState.total === 0) {
+    navigate("/");
+    return;
+  }
+
+  const order =
+    (pagoState.orderData as Record<string, any>)?.orderNumber ?? "";
+
+  setOrderNumber(order);
+
+  timerRef.current = setInterval(() => {
+    setSecondsLeft((s) => {
+      if (s <= 1) {
+        clearInterval(timerRef.current!);
+        setTimerExpired(true);
+        return 0;
+      }
+      return s - 1;
+    });
+  }, 1000);
+
+  return () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+  };
+}, []);
 
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;

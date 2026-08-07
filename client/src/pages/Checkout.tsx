@@ -72,24 +72,29 @@ export default function Checkout() {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const createOrder = trpc.orders.create.useMutation({
-    onSuccess: () => {
-      // Guardar estado en sessionStorage para la página de pago
-      sessionStorage.setItem("mfd_pago_state", JSON.stringify({
-        total,
-        orderData: {
-          customerName: form.customerName,
-          customerPhone: form.customerPhone,
-          deliveryAddress: getDeliveryAddress(),
-        },
-      }));
-      clearCart();
-      navigate("/pago");
-    },
-    onError: (e) => {
-      toast.error("Error al procesar el pedido: " + e.message);
-    },
-  });
+    onSuccess: (data) => {
+  // Guardar estado en sessionStorage para la página de pago
+  sessionStorage.setItem(
+    "mfd_pago_state",
+    JSON.stringify({
+      total,
+      orderData: {
+        customerName: form.customerName,
+        customerPhone: form.customerPhone,
+        deliveryAddress: getDeliveryAddress(),
+        orderNumber: data.orderNumber,
+      },
+    })
+  );
 
+  clearCart();
+  navigate("/pago");
+},
+
+onError: (e) => {
+  toast.error("Error al procesar el pedido: " + e.message);
+},
+});
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.customerName.trim()) e.customerName = "Nombre requerido";

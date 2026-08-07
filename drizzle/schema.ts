@@ -95,6 +95,7 @@ export type InsertSale = typeof sales.$inferInsert;
 
 export const orders = mysqlTable("orders", {
   id: int("id").autoincrement().primaryKey(),
+  orderNumber: varchar("orderNumber", { length: 30 }).unique(),
   customerName: varchar("customerName", { length: 255 }).notNull(),
   customerPhone: varchar("customerPhone", { length: 64 }).notNull(),
   customerEmail: varchar("customerEmail", { length: 320 }),

@@ -1,3 +1,4 @@
+import { customAlphabet } from "nanoid";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { COOKIE_NAME } from "@shared/const";
@@ -26,6 +27,11 @@ import {
 import { storagePut } from "./storage";
 
 const adminProcedure = publicProcedure;
+
+const generateOrderNumber = customAlphabet(
+  "123456789ABCDEFGHJKLMNPQRSTUVWXYZ",
+  8
+);
 
 const productInput = z.object({
   name: z.string().min(1),
@@ -83,26 +89,39 @@ export const appRouter = router({
         notes: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
-        const db = await import("./db").then(m => m.getDb());
-        if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-        const { orders } = await import("../drizzle/schema");
-        await db.insert(orders).values({
-          customerName: input.customerName,
-          customerPhone: input.customerPhone,
-          customerEmail: input.customerEmail,
-          deliveryAddress: input.deliveryAddress,
-          deliveryNeighborhood: input.deliveryNeighborhood,
-          deliveryDate: input.deliveryDate,
-          deliveryTime: input.deliveryTime,
-          dedicatoria: input.dedicatoria,
-          items: input.items,
-          subtotal: String(input.subtotal),
-          total: String(input.total),
-          notes: input.notes,
-        });
-        return { success: true };
-      }),
-  }),
+  const db = await import("./db").then((m) => m.getDb());
+
+  if (!db) {
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+  }
+
+  const { orders } = await import("../drizzle/schema");
+
+  const orderNumber = `MFD-${generateOrderNumber()}`;
+
+  await db.insert(orders).values({
+    orderNumber,
+
+    customerName: input.customerName,
+    customerPhone: input.customerPhone,
+    customerEmail: input.customerEmail,
+    deliveryAddress: input.deliveryAddress,
+    deliveryNeighborhood: input.deliveryNeighborhood,
+    deliveryDate: input.deliveryDate,
+    deliveryTime: input.deliveryTime,
+    dedicatoria: input.dedicatoria,
+    items: input.items,
+    subtotal: String(input.subtotal),
+    total: String(input.total),
+    notes: input.notes,
+  });
+
+  return {
+    success: true,
+    orderNumber,
+  };
+    }),
+}),
 
   // ---- Admin orders ----
 

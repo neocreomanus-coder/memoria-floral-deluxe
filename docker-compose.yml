@@ -53,6 +53,7 @@ services:
     networks:
       - app-network
       - memoria-network
+      - proxy
 
 networks:
   app-network:
@@ -61,3 +62,6 @@ networks:
   memoria-network:
     external: true
     name: memoria-floral-deluxe_memoria-network
+
+  proxy:
+    external: true

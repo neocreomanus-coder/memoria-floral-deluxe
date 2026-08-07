@@ -130,7 +130,7 @@ onError: (e) => {
       deliveryTime: form.deliveryTime,
       dedicatoria: form.dedicatoria,
       notes: form.notes,
-      items: JSON.stringify(items.map(i => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity }))),
+      items: JSON.stringify(items),
       subtotal,
       total,
     });

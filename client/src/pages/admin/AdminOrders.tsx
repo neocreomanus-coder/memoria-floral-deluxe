@@ -152,14 +152,28 @@ export default function AdminOrdersWithAccounting() {
                       </span>
 
                       {/* Customer + date */}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-base font-medium truncate" style={{ color: TEXT_MAIN, fontFamily: "'Roboto', sans-serif" }}>
-                          {order.customerName}
-                        </p>
-                        <p className="text-base truncate" style={{ color: TEXT_MUTED, fontFamily: "'Roboto', sans-serif" }}>
-                          {order.customerPhone} · {formatDate(order.createdAt)}
-                        </p>
-                      </div>
+<div className="flex-1 min-w-0">
+  <p
+    className="text-xs font-semibold"
+    style={{ color: GOLD }}
+  >
+    {order.orderNumber ?? `#${order.id}`}
+  </p>
+
+  <p
+    className="text-base font-medium truncate"
+    style={{ color: TEXT_MAIN, fontFamily: "'Roboto', sans-serif" }}
+  >
+    {order.customerName}
+  </p>
+
+  <p
+    className="text-base truncate"
+    style={{ color: TEXT_MUTED, fontFamily: "'Roboto', sans-serif" }}
+  >
+    {order.customerPhone} · {formatDate(order.createdAt)}
+  </p>
+</div>
 
                       {/* Total */}
                       <p className="text-base font-medium flex-shrink-0" style={{ color: GOLD, fontFamily: "'Roboto', sans-serif", fontSize: "1rem" }}>

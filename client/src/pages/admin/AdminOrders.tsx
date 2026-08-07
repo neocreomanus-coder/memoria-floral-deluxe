@@ -129,8 +129,20 @@ export default function AdminOrdersWithAccounting() {
               {filtered.map((order) => {
                 const cfg = STATUS_CONFIG[order.status as OrderStatus] ?? STATUS_CONFIG.pending;
                 const isOpen = expanded === order.id;
-                let items: { name: string; quantity: number; price: number }[] = [];
-                try { items = JSON.parse(order.items); } catch {}
+                let items: {
+  name: string;
+  quantity: number;
+  price: number;
+  adicionales?: {
+    cintaMarcada?: boolean;
+    tripode?: boolean;
+  };
+  adicionalesPrice?: number;
+}[] = [];
+
+try {
+  items = JSON.parse(order.items);
+} catch {}
 
                 return (
                   <div
@@ -211,22 +223,86 @@ export default function AdminOrdersWithAccounting() {
 
                           {/* Right: items */}
                           <div>
-                            <p className="text-base tracking-widest uppercase mb-2" style={{ color: TEXT_MUTED, fontFamily: "'Roboto', sans-serif" }}>Productos</p>
-                            <div className="space-y-1">
-                              {items.map((item, i) => (
-                                <div key={i} className="flex justify-between text-base">
-                                  <span style={{ color: TEXT_MAIN, fontFamily: "'Roboto', sans-serif" }}>{item.name} x{item.quantity}</span>
-                                  <span style={{ color: GOLD, fontFamily: "'Roboto', sans-serif" }}>{formatCOP(item.price * item.quantity)}</span>
-                                </div>
-                              ))}
-                              <div className="flex justify-between text-base font-medium pt-2 border-t" style={{ borderColor: BORDER }}>
-                                <span style={{ color: TEXT_MAIN, fontFamily: "'Roboto', sans-serif" }}>Total</span>
-                                <span style={{ color: GOLD, fontFamily: "'Roboto', sans-serif", fontSize: "1rem" }}>{formatCOP(order.total)}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+  <p
+    className="text-base tracking-widest uppercase mb-2"
+    style={{ color: TEXT_MUTED, fontFamily: "'Roboto', sans-serif" }}
+  >
+    Productos
+  </p>
 
+  <div className="space-y-1">
+    {items.map((item, i) => (
+      <div key={i} className="mb-2">
+
+        <div className="flex justify-between text-base">
+          <span
+            style={{
+              color: TEXT_MAIN,
+              fontFamily: "'Roboto', sans-serif",
+            }}
+          >
+            {item.name} x{item.quantity}
+          </span>
+
+          <span
+            style={{
+              color: GOLD,
+              fontFamily: "'Roboto', sans-serif",
+            }}
+          >
+            {formatCOP((item.price + (item.adicionalesPrice || 0)) * item.quantity)}
+          </span>
+        </div>
+
+        {item.adicionales &&
+          (item.adicionales.cintaMarcada || item.adicionales.tripode) && (
+            <div
+              className="text-sm"
+              style={{
+                color: TEXT_MUTED,
+                fontFamily: "'Roboto', sans-serif",
+                marginTop: "2px",
+                marginLeft: "2px",
+              }}
+            >
+              <strong>Adicionales:</strong>{" "}
+              {[
+                item.adicionales.cintaMarcada ? "Cinta marcada" : null,
+                item.adicionales.tripode ? "Trípode" : null,
+              ]
+                .filter(Boolean)
+                .join(" • ")}
+            </div>
+          )}
+      </div>
+    ))}
+
+    <div
+      className="flex justify-between text-base font-medium pt-2 border-t"
+      style={{ borderColor: BORDER }}
+    >
+      <span
+        style={{
+          color: TEXT_MAIN,
+          fontFamily: "'Roboto', sans-serif",
+        }}
+      >
+        Total
+      </span>
+
+      <span
+        style={{
+          color: GOLD,
+          fontFamily: "'Roboto', sans-serif",
+          fontSize: "1rem",
+        }}
+      >
+        {formatCOP(order.total)}
+      </span>
+    </div>
+  </div>
+</div>
+</div>
                         {/* Status actions */}
                         <div className="mt-4 pt-4 border-t" style={{ borderColor: BORDER }}>
                           <p className="text-base tracking-widest uppercase mb-3" style={{ color: TEXT_MUTED, fontFamily: "'Roboto', sans-serif" }}>Cambiar estado</p>

@@ -153,12 +153,15 @@ export default function AdminOrdersWithAccounting() {
 
                       {/* Customer + date */}
 <div className="flex-1 min-w-0">
-  <p
-    className="text-xs font-semibold"
-    style={{ color: GOLD }}
-  >
-    {order.orderNumber ?? `#${order.id}`}
-  </p>
+ <p
+  className="text-xs font-semibold mb-1"
+  style={{
+    color: "#000000",
+    fontFamily: "'Roboto', sans-serif",
+  }}
+>
+  {order.orderNumber ?? `#${order.id}`}
+</p>
 
   <p
     className="text-base font-medium truncate"

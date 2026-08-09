@@ -1,6 +1,6 @@
 import { useLocation } from "wouter";
 
-const HERO_IMAGE = "/hero.webp";
+const HERO_IMAGE = "/manus-storage/hero-hd_d737525c.webp";
 const gold = "oklch(0.88 0.14 80)";
 const goldMid = "oklch(0.72 0.12 80)";
 const white = "oklch(0.97 0.01 75)";

@@ -1,6 +1,6 @@
 import { useLocation } from "wouter";
 
-const HERO_IMAGE = "/manus-storage/hero-hd_d737525c.png";
+const HERO_IMAGE = "/hero.webp";
 const gold = "oklch(0.88 0.14 80)";
 const goldMid = "oklch(0.72 0.12 80)";
 const white = "oklch(0.97 0.01 75)";
@@ -17,23 +17,27 @@ export default function HeroSection() {
         minHeight: "clamp(580px, 90vh, 96vh)",
       }}
     >
-      {/* Background image */}
+       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
           src={HERO_IMAGE}
           alt="Arreglos fúnebres Memoria Floral Deluxe Barranquilla"
           className="w-full h-full object-cover"
           style={{ opacity: 1 }}
-        />
-        {/* Gradient: strong dark left for text, fades right to show image */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, oklch(0.05 0 0 / 0.78) 0%, oklch(0.06 0 0 / 0.45) 45%, oklch(0.06 0 0 / 0.06) 100%)",
-          }}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
+
+      {/* Gradient: strong dark left for text, fades right to show image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, oklch(0.05 0 0 / 0.78) 0%, oklch(0.06 0 0 / 0.45) 45%, oklch(0.06 0 0 / 0.06) 100%)",
+        }}
+      />
 
       {/* Content */}
       <div className="container relative z-10 py-10 md:py-16 lg:py-20">

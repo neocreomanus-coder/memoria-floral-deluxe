@@ -24,6 +24,10 @@ services:
       
       # Authentication
       JWT_SECRET: ${JWT_SECRET}
+
+      # Telegram - New Order Notifications
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
       
       # AWS S3 / Cloudflare R2 Storage
       S3_REGION: ${S3_REGION:-us-east-1}

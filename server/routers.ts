@@ -25,6 +25,7 @@ import {
   updateProduct,
 } from "./db";
 import { storagePut } from "./storage";
+import { sendTelegramOrderNotification } from "./telegram";
 
 const adminProcedure = publicProcedure;
 
@@ -114,6 +115,12 @@ export const appRouter = router({
     subtotal: String(input.subtotal),
     total: String(input.total),
     notes: input.notes,
+  });
+
+  // Notify the store without making Telegram a dependency for order creation.
+  await sendTelegramOrderNotification({
+    orderNumber,
+    ...input,
   });
 
   return {

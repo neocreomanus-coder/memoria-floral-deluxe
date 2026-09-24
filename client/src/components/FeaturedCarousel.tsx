@@ -102,7 +102,7 @@ export default function FeaturedCarousel() {
 
         <div className="flex justify-center mt-8">
           <a
-            href="https://wa.me/573011621986"
+            href="https://wa.me/573246059775"
             target="_blank"
             rel="noopener noreferrer"
             className="px-10 py-3 text-base font-bold tracking-widest uppercase transition-all hover:opacity-80"

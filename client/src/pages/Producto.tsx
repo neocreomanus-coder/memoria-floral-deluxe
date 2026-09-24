@@ -151,7 +151,7 @@ export default function Producto() {
 
   const handleWhatsApp = () => {
     const msg = `Hola, me interesa el arreglo: *${product.name}* — ${formatPrice(price)} (Cantidad: ${qty})`;
-    window.open(`https://wa.me/573011621986?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/573246059775?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (

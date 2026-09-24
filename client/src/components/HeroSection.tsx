@@ -163,7 +163,7 @@ export default function HeroSection() {
           <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
             {/* WhatsApp — botón principal de mayor conversión */}
             <a
-              href="https://wa.me/573011621986?text=Hola,%20necesito%20un%20arreglo%20fúnebre%20con%20entrega%20inmediata%20en%20Barranquilla"
+              href="https://wa.me/573246059775?text=Hola,%20necesito%20un%20arreglo%20fúnebre%20con%20entrega%20inmediata%20en%20Barranquilla"
               target="_blank"
               rel="noopener noreferrer"
               style={{

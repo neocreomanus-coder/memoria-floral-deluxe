@@ -214,7 +214,7 @@ export default function CartDrawer() {
               PROCEDER AL PAGO
             </button>
             <a
-              href={`https://wa.me/573011621986?text=${encodeURIComponent("Hola, quisiera hacer un pedido:\n" + items.map(i => `• ${i.name} x${i.quantity} — ${formatPrice(i.price * i.quantity)}`).join("\n") + `\n\nTotal: ${formatPrice(subtotal)}`)}`}
+              href={`https://wa.me/573246059775?text=${encodeURIComponent("Hola, quisiera hacer un pedido:\n" + items.map(i => `• ${i.name} x${i.quantity} — ${formatPrice(i.price * i.quantity)}`).join("\n") + `\n\nTotal: ${formatPrice(subtotal)}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full text-base font-semibold transition-all hover:opacity-90"

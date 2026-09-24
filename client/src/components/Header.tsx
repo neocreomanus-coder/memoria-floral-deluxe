@@ -136,7 +136,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           {/* WhatsApp — desktop only */}
           <a
-            href="https://wa.me/573011621986"
+            href="https://wa.me/573246059775"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-gold hidden lg:flex items-center gap-2 px-4 py-2 rounded-full text-base"
@@ -204,7 +204,7 @@ export default function Header() {
             className="flex items-center justify-between px-4 py-2 text-base"
             style={{ backgroundColor: "oklch(0 0 0)", color: "oklch(0.72 0.02 75)", fontFamily: "'Lato', sans-serif" }}
           >
-            <a href="tel:+573011621986" className="flex items-center gap-1.5">
+            <a href="tel:+573246059775" className="flex items-center gap-1.5">
               <span style={{ color: "oklch(0.72 0.12 80)" }}>📞</span>301 162 1986
             </a>
             <span style={{ color: "oklch(0.50 0 0)" }}>|</span>
@@ -233,7 +233,7 @@ export default function Header() {
               </button>
             ))}
             <a
-              href="https://wa.me/573011621986"
+              href="https://wa.me/573246059775"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold flex items-center justify-center gap-2 px-4 py-3.5 rounded-full text-base mt-3 mb-1"

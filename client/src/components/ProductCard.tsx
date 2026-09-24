@@ -284,7 +284,7 @@ export default function ProductCard({ id, name, price, originalPrice, imageUrl, 
 
         {/* WhatsApp */}
         <a
-          href={`https://wa.me/573011621986?text=${encodeURIComponent(`Hola, me interesa: ${name} — ${formatPrice(price)}`)}`}
+          href={`https://wa.me/573246059775?text=${encodeURIComponent(`Hola, me interesa: ${name} — ${formatPrice(price)}`)}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}

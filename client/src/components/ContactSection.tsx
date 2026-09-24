@@ -31,7 +31,7 @@ export default function ContactSection() {
             <div>
               <p className="text-base tracking-widest uppercase mb-1" style={{ color: "oklch(0.72 0.12 80)", fontFamily: "'Lato', sans-serif" }}>WhatsApp</p>
               <a
-                href="https://wa.me/573011621986"
+                href="https://wa.me/573246059775"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-lg font-light hover:opacity-70 transition-opacity"
@@ -91,7 +91,7 @@ export default function ContactSection() {
         {/* CTA WhatsApp */}
         <div className="flex justify-center mt-8 md:mt-12">
           <a
-            href="https://wa.me/573011621986?text=Hola,%20me%20interesa%20un%20arreglo%20fúnebre"
+            href="https://wa.me/573246059775?text=Hola,%20me%20interesa%20un%20arreglo%20fúnebre"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 px-10 py-4 text-base font-bold tracking-widest uppercase transition-all hover:opacity-80"

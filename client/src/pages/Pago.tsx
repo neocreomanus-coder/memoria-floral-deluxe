@@ -67,7 +67,7 @@ export default function Pago() {
   const whatsappMsg = encodeURIComponent(
     `Hola Memoria Floral Deluxe! 🌹\n\nAdjunto el comprobante de pago.\n\nNúmero de pedido: *${orderNumber}*\nTotal pagado: *${formatPrice(pagoState.total)}*\n\nPor favor confirmar despacho inmediato. ¡Gracias!`
   );
-  const whatsappUrl = `https://wa.me/573011621986?text=${whatsappMsg}`;
+  const whatsappUrl = `https://wa.me/573246059775?text=${whatsappMsg}`;
 
   const BOLD_LOGO = "/manus-storage/bold-logo_cd249c0e.png";
 
@@ -177,7 +177,7 @@ export default function Pago() {
 
               <p className="text-center text-base" style={{ fontFamily: "'Roboto', sans-serif", color: "oklch(0.60 0 0)" }}>
                 ¿Necesitas ayuda?{" "}
-                <a href={`https://wa.me/573011621986`} target="_blank" rel="noopener noreferrer"
+                <a href={`https://wa.me/573246059775`} target="_blank" rel="noopener noreferrer"
                   style={{ color: "oklch(0.45 0.12 80)", fontWeight: 600 }}>
                   Escríbenos por WhatsApp
                 </a>

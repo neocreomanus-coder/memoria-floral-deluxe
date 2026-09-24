@@ -203,7 +203,7 @@ export default function Catalogo() {
                 Contáctanos para solicitar un arreglo personalizado
               </p>
               <a
-                href="https://wa.me/573011621986?text=Hola,%20quisiera%20información%20sobre%20sus%20arreglos%20fúnebres"
+                href="https://wa.me/573246059775?text=Hola,%20quisiera%20información%20sobre%20sus%20arreglos%20fúnebres"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold px-8 py-3.5 rounded-full text-base"
@@ -332,7 +332,7 @@ function CatalogCard({ product }: { product: { id: number; name: string; price: 
           Agregar al carrito
         </button>
         <a
-          href={`https://wa.me/573011621986?text=Hola,%20me%20interesa%20el%20arreglo:%20${encodeURIComponent(product.name)}`}
+          href={`https://wa.me/573246059775?text=Hola,%20me%20interesa%20el%20arreglo:%20${encodeURIComponent(product.name)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-1.5 rounded-full text-center flex items-center justify-center gap-1.5 font-bold transition-all hover:opacity-90 active:scale-95"

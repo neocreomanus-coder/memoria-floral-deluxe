@@ -79,7 +79,7 @@ export default function Footer() {
                 </svg>
                 <a href="https://wa.me/573246059775" target="_blank" rel="noopener noreferrer"
                   style={{ color: darkText, fontFamily: serif, fontSize: "1.05rem", fontWeight: 300, textDecoration: "none" }}>
-                  301 162 1986
+                  3246059775
                 </a>
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>

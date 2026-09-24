@@ -205,7 +205,7 @@ export default function Header() {
             style={{ backgroundColor: "oklch(0 0 0)", color: "oklch(0.72 0.02 75)", fontFamily: "'Lato', sans-serif" }}
           >
             <a href="tel:+573246059775" className="flex items-center gap-1.5">
-              <span style={{ color: "oklch(0.72 0.12 80)" }}>📞</span>301 162 1986
+              <span style={{ color: "oklch(0.72 0.12 80)" }}>📞</span>3246059775
             </a>
             <span style={{ color: "oklch(0.50 0 0)" }}>|</span>
             <span className="flex items-center gap-1.5">

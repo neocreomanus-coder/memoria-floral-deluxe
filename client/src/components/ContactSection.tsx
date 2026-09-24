@@ -37,7 +37,7 @@ export default function ContactSection() {
                 className="text-lg font-light hover:opacity-70 transition-opacity"
                 style={{ color: "oklch(0.92 0.015 75)", fontFamily: "'Cormorant Garamond', serif" }}
               >
-                301 162 1986
+                3246059775
               </a>
             </div>
           </div>
